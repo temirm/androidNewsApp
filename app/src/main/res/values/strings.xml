@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NewsApp</string>
+    <string name="previous_news_button_alt_text">Previous news button</string>
+    <string name="next_news_button_alt_text">Next news button</string>
 </resources>
