@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewsListFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_news_list_title_one"
+            style="@style/NewsListTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="News Title" />
+
+        <TextView
+            android:id="@+id/tv_news_list_title_two"
+            style="@style/NewsListTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="News Title" />
+
+        <TextView
+            android:id="@+id/tv_news_list_title_three"
+            style="@style/NewsListTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="News Title" />
+
+        <TextView
+            android:id="@+id/tv_news_list_title_four"
+            style="@style/NewsListTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="News Title" />
+
+        <TextView
+            android:id="@+id/tv_news_list_title_five"
+            style="@style/NewsListTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="News Title" />
+
+        <TextView
+            android:id="@+id/tv_news_list_title_six"
+            style="@style/NewsListTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="News Title" />
+    </LinearLayout>
+</ScrollView>
