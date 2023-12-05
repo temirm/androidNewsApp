@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.newsapp.NewsService.NewsDetailsModel
 
 private const val ARG_NEWS_DETAILS = "news_details"
 

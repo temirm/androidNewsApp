@@ -1,24 +1,38 @@
 package com.example.newsapp
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.newsapp.NewsService.NewsListModel
 
 private const val ARG_NEWS_LIST = "news_list"
 
 class NewsListFragment : Fragment() {
 
-    private var newsList: ArrayList<NewsDetailsModel> = arrayListOf()
-
+    private var newsClickListener: NewsClickListener? = null
+    private var newsListData: ArrayList<NewsListModel> = arrayListOf()
     private var newsTitlesViews: MutableList<TextView> = mutableListOf()
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is NewsClickListener) {
+            newsClickListener = context
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        newsClickListener = null
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            newsList = it.getSerializable(ARG_NEWS_LIST) as ArrayList<NewsDetailsModel>
+            newsListData = it.getSerializable(ARG_NEWS_LIST) as ArrayList<NewsListModel>
         }
     }
 
@@ -46,25 +60,22 @@ class NewsListFragment : Fragment() {
     }
 
     private fun setNewsTitlesText() {
-        newsTitlesViews.forEachIndexed { index, textView -> textView.text = newsList[index].title }
+        newsTitlesViews.forEachIndexed { index, textView ->
+            textView.text = newsListData[index].title
+        }
     }
 
     private fun setClickListeners() {
         newsTitlesViews.forEachIndexed { index, textView ->
             textView.setOnClickListener {
-                parentFragmentManager
-                    .beginTransaction()
-                    .add(
-                        R.id.fragment_news_details,
-                        NewsDetailsFragment.newInstance(newsList[index]))
-                    .commit()
+                newsClickListener?.onNewsClick(newsListData[index].id)
             }
         }
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(newsList: ArrayList<NewsDetailsModel>) =
+        fun newInstance(newsList: ArrayList<NewsListModel>) =
             NewsListFragment().apply {
                 arguments = Bundle().apply {
                     putSerializable(ARG_NEWS_LIST, newsList)
